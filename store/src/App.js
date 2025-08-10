@@ -47,26 +47,30 @@ function AppContent() {
             element={<CategoryPage addToCart={addToCart} />}
           />
           <Route path="/contact" element={<ContactForm />} />
+
+          {/* Open cart page for all users (no ProtectedRoute) */}
           <Route
             path="/cart"
             element={
-              <ProtectedRoute>
-                <CartPage
-                  cartItems={cartItems}
-                  removeFromCart={removeFromCart}
-                />
-              </ProtectedRoute>
+              <CartPage
+                cartItems={cartItems}
+                removeFromCart={removeFromCart}
+              />
             }
           />
+
           <Route path="/account" element={<AccountPage />} />
-          
+
           {/* 404 Route */}
-          <Route path="*" element={
-            <div className="flex flex-col items-center justify-center h-full">
-              <h1 className="text-4xl font-bold mb-4">404</h1>
-              <p className="text-xl">Page not found</p>
-            </div>
-          } />
+          <Route
+            path="*"
+            element={
+              <div className="flex flex-col items-center justify-center h-full">
+                <h1 className="text-4xl font-bold mb-4">404</h1>
+                <p className="text-xl">Page not found</p>
+              </div>
+            }
+          />
         </Routes>
       </div>
 

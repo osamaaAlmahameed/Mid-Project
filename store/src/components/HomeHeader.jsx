@@ -1,22 +1,22 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import logo from '../assets/icon.png'; // Ensure this path is correct
+import logo from '../assets/icon.png';
 
-const HomeHeader = ({ cartCount = 0 }) => { // Default value for cartCount
+const HomeHeader = ({ cartCount = 0 }) => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
-  const { user, isAuthenticated, logout } = useContext(AuthContext) || {}; // Fallback for undefined context
+  const { user, isAuthenticated, logout } = useContext(AuthContext) || {};
 
+  // Handle search
   const handleSearch = (e) => {
     e.preventDefault();
-    if (!query?.trim()) return; // Null check
+    if (!query?.trim()) return;
     navigate(`/search?q=${encodeURIComponent(query)}`);
     setQuery('');
     window.scrollTo(0, 0);
   };
 
-  // Fallback UI if critical data is missing
   if (!logo) {
     console.error('Logo image not found at ../assets/icon.png');
   }
@@ -24,7 +24,8 @@ const HomeHeader = ({ cartCount = 0 }) => { // Default value for cartCount
   return (
     <header className="bg-[#0c0c1d] text-white shadow-md shadow-blue-600 fixed left-0 right-0 z-50">
       <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-        {/* Logo + Title - with error boundary */}
+        
+        {/* Logo + Title */}
         <Link to="/" className="flex items-center gap-2">
           {logo ? (
             <img 
@@ -52,6 +53,8 @@ const HomeHeader = ({ cartCount = 0 }) => { // Default value for cartCount
 
         {/* Search and Auth Section */}
         <div className="flex items-center gap-4">
+          
+          {/* Search */}
           <form onSubmit={handleSearch} className="flex gap-2">
             <input
               type="text"
@@ -68,7 +71,7 @@ const HomeHeader = ({ cartCount = 0 }) => { // Default value for cartCount
             </button>
           </form>
 
-          {/* Auth Section */}
+          {/* Auth & Cart */}
           <div className="flex items-center gap-3 ml-2">
             {isAuthenticated ? (
               <>
@@ -91,8 +94,9 @@ const HomeHeader = ({ cartCount = 0 }) => { // Default value for cartCount
               </Link>
             )}
 
+            {/* Cart */}
             <Link 
-              to="/cart" 
+              to="/cart"
               className="relative hover:underline flex items-center"
               aria-label="Shopping Cart"
             >
