@@ -80,7 +80,7 @@ const HomeHeader = ({ cartCount = 0 }) => {
                 </span>
                 <button
                   onClick={logout}
-                  className="text-sm hover:underline"
+                  className="text-sm hover:underline bg-red-600 text-white px-2 py-1 rounded"
                 >
                   Logout
                 </button>

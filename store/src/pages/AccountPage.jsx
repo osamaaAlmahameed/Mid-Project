@@ -30,7 +30,7 @@ const AccountPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 p-4 ">
       <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <div className="flex border-b border-gray-700">
           <button
